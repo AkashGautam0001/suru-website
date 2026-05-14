@@ -6,6 +6,7 @@ import { PillCta } from "./PillCta.jsx";
 
 const SCROLL_DELTA = 6;
 const TOP_THRESHOLD = 56;
+const GREEN = "#00c57e";
 
 export default function Navbar() {
   const [menuOpen, setMenuOpen] = useState(false);
@@ -54,61 +55,57 @@ export default function Navbar() {
 
   return (
     <nav
-      className={`fixed top-0 left-0 z-50 flex w-full items-center justify-between px-6 py-1 transition-transform duration-300 ease-out md:px-20 ${
+      className={`fixed top-0 left-0 z-50 grid w-full grid-cols-[1fr_auto_1fr] items-center gap-3 px-4 py-3 transition-transform duration-300 ease-out sm:px-8 md:px-16 lg:px-20 ${
         hidden ? "-translate-y-full pointer-events-none" : "translate-y-0"
       }`}
     >
-      {/* Logo */}
-      <a href="#hero" className="no-underline">
-        <img src={logo} alt="Suru Logo" className="h-20 w-auto" />
+      <a href="#hero" className="justify-self-start no-underline" aria-label="Suru Design home">
+        <img
+          src={logo}
+          alt="Suru Design"
+          className="h-14 w-auto object-contain sm:h-16 md:h-[4.25rem]"
+        />
       </a>
 
-      {/* Desktop Nav Links */}
-      <div className="hidden md:flex gap-8 lg:gap-10 items-center bg-white/40 backdrop-blur-md px-8 py-3 rounded-full border border-white/60">
-        {NAV_LINKS.map((link) => (
-          <a
-            key={link.href}
-            href={link.href}
-            className="text-base lg:text-lg font-medium text-[#1f1f1f] no-underline hover:text-[#00c57e] transition-colors duration-200"
-          >
-            {link.label}
-          </a>
-        ))}
+      <div className="col-start-2 hidden items-center justify-center md:flex">
+        <div className="flex items-center gap-6 rounded-full border border-white/70 bg-white/75 px-8 py-2.5 text-[#1f1f1f] shadow-sm backdrop-blur-md lg:gap-10 lg:px-10 lg:py-3">
+          {NAV_LINKS.map((link) => (
+            <a
+              key={link.href}
+              href={link.href}
+              className="text-sm font-medium text-[#1f1f1f] no-underline transition-colors duration-200 hover:text-[#00c57e] lg:text-base"
+            >
+              {link.label}
+            </a>
+          ))}
+        </div>
       </div>
 
-      {/* Badge */}
-      <div className="hidden md:flex gap-4 items-center bg-white/40 backdrop-blur-md px-6 py-3 rounded-full text-sm font-medium text-[#686868] border border-white/60">
-        <span>Ashwani Tyagi</span>
-        <span>Startup UI/UX Designer</span>
-      </div>
-
-      {/* Mobile hamburger */}
       <button
         type="button"
-        className="md:hidden flex flex-col gap-1.5 p-2"
+        className="col-start-3 justify-self-end flex flex-col gap-1.5 p-2 md:hidden"
         onClick={() => setMenuOpen(!menuOpen)}
         aria-expanded={menuOpen}
         aria-label="Toggle menu"
       >
         <span
-          className={`block h-0.5 w-6 bg-[#1f1f1f] transition-transform duration-200 ${menuOpen ? "rotate-45 translate-y-2" : ""}`}
+          className={`block h-0.5 w-6 bg-[#1f1f1f] transition-transform duration-200 ${menuOpen ? "translate-y-2 rotate-45" : ""}`}
         />
         <span
           className={`block h-0.5 w-6 bg-[#1f1f1f] transition-opacity duration-200 ${menuOpen ? "opacity-0" : ""}`}
         />
         <span
-          className={`block h-0.5 w-6 bg-[#1f1f1f] transition-transform duration-200 ${menuOpen ? "-rotate-45 -translate-y-2" : ""}`}
+          className={`block h-0.5 w-6 bg-[#1f1f1f] transition-transform duration-200 ${menuOpen ? "-translate-y-2 -rotate-45" : ""}`}
         />
       </button>
 
-      {/* Mobile Menu Dropdown */}
       {menuOpen && (
-        <div className="pointer-events-auto absolute left-0 top-full flex w-full flex-col items-center gap-5 bg-white/90 py-6 shadow-lg backdrop-blur-md md:hidden">
+        <div className="pointer-events-auto absolute left-0 top-full flex w-full flex-col items-center gap-5 border-t border-black/5 bg-white/95 py-6 shadow-lg backdrop-blur-md md:hidden">
           {NAV_LINKS.map((link) => (
             <a
               key={link.href}
               href={link.href}
-              className="text-lg font-medium text-[#1f1f1f] no-underline hover:text-[#00c57e] transition-colors"
+              className="text-lg font-medium text-[#1f1f1f] no-underline transition-colors hover:text-[#00c57e]"
               onClick={() => setMenuOpen(false)}
             >
               {link.label}
@@ -117,7 +114,7 @@ export default function Navbar() {
           <PillCta
             as="a"
             href="#contact"
-            style={{ background: "#00c57e" }}
+            style={{ background: GREEN }}
             onClick={() => setMenuOpen(false)}
           >
             Free Consultation

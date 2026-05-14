@@ -7,7 +7,7 @@ export default function WhatIOffer() {
   const ref = useScrollAnimation();
 
   return (
-    <section id="offer" ref={ref} className="fade-up py-24 px-6 md:px-12">
+    <section id="offer" ref={ref} className="fade-up py-24 content-area">
       <p className="text-center text-base font-medium text-[#00c57e] md:text-4xl mb-3 tracking-wide">What I Offer</p>
       <h2 className="text-5xl md:text-7xl lg:text-7xl font-medium text-center text-[#1f1f1f] leading-tight mb-5">
         A full UX capability
@@ -18,7 +18,7 @@ export default function WhatIOffer() {
 
       {/* Horizontal scroll (all breakpoints) — left/right gutter inside scroll area */}
       <div
-        className="flex w-full gap-4 overflow-x-auto scroll-smooth scroll-pl-6 scroll-pr-6 pb-3 pl-6 pr-6 pt-1 [scrollbar-width:none] [-ms-overflow-style:none] snap-x snap-mandatory touch-pan-x md:scroll-pl-10 md:scroll-pr-10 md:pl-10 md:pr-10 lg:scroll-pl-14 lg:scroll-pr-14 lg:pl-14 lg:pr-14 [&::-webkit-scrollbar]:hidden"
+        className="flex w-full gap-4 overflow-x-auto scroll-smooth scroll-pl-0 scroll-pr-0 pb-3 pl-0 pr-0 pt-1 [scrollbar-width:none] [-ms-overflow-style:none] snap-x snap-mandatory touch-pan-x [&::-webkit-scrollbar]:hidden"
         style={{ WebkitOverflowScrolling: "touch" }}>
         {PROCESS_CARDS.map((card) => (
           <div

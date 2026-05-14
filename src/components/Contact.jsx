@@ -65,16 +65,14 @@ export default function Contact() {
   };
 
   return (
-    <div
-      id="contact"
-      ref={ref}
-      className="fade-up mx-4 sm:mx-6 md:mx-10 mb-16"
-      style={{
-        background: "#2b2b2b",
-        borderRadius: "clamp(2rem, 5vw, 4.5rem)",
-        padding: "clamp(2.5rem, 6vw, 5rem) clamp(1.5rem, 5vw, 5rem)",
-      }}
-    >
+    <div id="contact" ref={ref} className="fade-up content-area mb-16">
+      <div
+        style={{
+          background: "#2b2b2b",
+          borderRadius: "clamp(2rem, 5vw, 4.5rem)",
+          padding: "clamp(2.5rem, 6vw, 5rem) clamp(1.5rem, 5vw, 5rem)",
+        }}
+      >
       <div className="grid grid-cols-1 md:grid-cols-2 gap-12 md:gap-20 items-start max-w-5xl mx-auto">
 
         {/* ── Left ── */}
@@ -194,6 +192,7 @@ export default function Contact() {
             </form>
           )}
         </div>
+      </div>
       </div>
     </div>
   );

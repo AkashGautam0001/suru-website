@@ -183,7 +183,7 @@ export default function Services() {
 
   return (
     <section id="services" ref={ref} className="fade-up svc-section py-16 sm:py-20 md:py-28">
-      <div className="svc-section__inner mx-auto max-w-[1280px] px-4 sm:px-6 lg:px-8">
+      <div className="svc-section__inner content-area">
         <p className="mb-2 text-center text-sm font-semibold uppercase tracking-[0.14em] text-[#00c57e] sm:text-left">
           Services
         </p>

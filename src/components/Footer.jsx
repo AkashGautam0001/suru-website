@@ -80,11 +80,8 @@ const CONTACT_INFO = [
 
 export default function Footer() {
   return (
-    <footer
-      className="px-4 sm:px-6 md:px-12 pt-14 sm:pt-16 pb-8"
-      style={{ background: "#2b2b2b" }}
-    >
-      <div className="max-w-6xl mx-auto">
+    <footer className="pt-14 sm:pt-16 pb-8" style={{ background: "#2b2b2b" }}>
+      <div className="content-area">
 
         {/* ── Top Grid ── */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10 mb-12">
@@ -94,10 +91,10 @@ export default function Footer() {
             <img
               src={logo}
               alt="Suru Design"
-              className="h-12 w-auto object-contain mb-4"
+              className="mb-5 h-16 w-auto object-contain sm:h-20 md:h-24"
             />
             <p
-              className="text-sm leading-relaxed mb-5"
+              className="mb-6 max-w-md text-base leading-relaxed sm:text-lg"
               style={{ color: "rgba(255,255,255,0.45)" }}
             >
               A senior UX partner who works like a team member — helping
@@ -105,7 +102,7 @@ export default function Footer() {
             </p>
 
             {/* S.U.R.U tagline */}
-            <p className="text-sm tracking-widest font-medium">
+            <p className="text-base font-medium tracking-wide sm:text-lg">
               <span style={{ color: "rgba(255,255,255,0.45)" }}>S</span>
               <span style={{ color: "rgba(255,255,255,0.45)" }}>imple </span>
               <span style={{ color: "#44d557" }}>U</span>

@@ -9,9 +9,11 @@ export default function TrustedBy() {
       className="py-6 overflow-hidden"
       style={{ background: "rgba(255,255,255,0.46)", backdropFilter: "blur(4px)", borderTop: "1px solid rgba(255,255,255,.6)", borderBottom: "1px solid rgba(255,255,255,.6)" }}
     >
-      <p className="text-center text-sm font-medium text-black/40 mb-4 tracking-widest uppercase">
-        Trusted by growing companies
-      </p>
+      <div className="content-area">
+        <p className="text-center text-sm font-medium text-black/40 mb-4 tracking-widest uppercase">
+          Trusted by growing companies
+        </p>
+      </div>
       <div className="flex gap-20 animate-marquee whitespace-nowrap">
         {MARQUEE_ITEMS.map((item, i) => (
           <span key={i} className="text-2xl font-medium text-black/30 flex-shrink-0">

@@ -112,11 +112,13 @@ export default function Testimonials() {
 
   return (
     <section id="testimonials" ref={ref} className="fade-up tst-section py-16 md:py-24">
-      <div className="tst-section__head">
+      <div className="content-area">
+        <div className="tst-section__head">
         <h2 className="tst-section__title">
           10+ Entrepreneurs I&apos;ve Helped Shape Better Products
         </h2>
         <div className="tst-section__rule" aria-hidden />
+        </div>
       </div>
 
       <div className="tst-marquee">

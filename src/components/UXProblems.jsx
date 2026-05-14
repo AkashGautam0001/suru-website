@@ -21,7 +21,7 @@ export default function UXProblems() {
   const [activeTab, setActiveTab] = useState("startup");
 
   return (
-    <section id="problems" className="py-24 px-6 md:px-12">
+    <section id="problems" className="py-24 content-area">
       <h2 className="text-4xl md:text-6xl lg:text-7xl font-medium text-center text-[#1f1f1f] mb-12">
         The UX problems
       </h2>

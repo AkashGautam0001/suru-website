@@ -20,7 +20,7 @@ export default function Portfolio() {
     <section
       id="portfolio"
       ref={ref}
-      className="fade-up py-16 sm:py-20 md:py-24 px-4 sm:px-6 md:px-12 max-w-screen-xl mx-auto"
+      className="fade-up py-16 sm:py-20 md:py-24 content-area"
     >
       {/* Top Label */}
       <p className="text-4xl sm:text-6xl font-semibold text-[#00c57e] text-center mb-3 tracking-widest ">

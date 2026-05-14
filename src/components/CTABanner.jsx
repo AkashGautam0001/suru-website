@@ -24,12 +24,14 @@ export default function CTABanner() {
     <div
       id="cta-banner"
       ref={ref}
-      className="fade-up text-center overflow-hidden"
+      className="fade-up overflow-hidden text-center"
       style={{
         background: "linear-gradient(135deg, #ec74e8 0%, #d45fd0 50%, #c44fc0 100%)",
-        padding: "clamp(3rem, 8vw, 7rem) clamp(1.5rem, 6vw, 5rem)",
+        paddingTop: "clamp(3rem, 8vw, 7rem)",
+        paddingBottom: "clamp(3rem, 8vw, 7rem)",
       }}
     >
+      <div className="content-area">
       {/* ── Heading ── */}
       <h2
         className="font-light text-white leading-tight mx-auto"
@@ -121,6 +123,7 @@ export default function CTABanner() {
       >
         Free consultation · No obligations · Reply within 48 hours
       </p>
+      </div>
     </div>
   );
 }

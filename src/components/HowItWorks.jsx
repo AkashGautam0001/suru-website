@@ -71,8 +71,8 @@ export default function HowItWorks() {
       }}
     >
       {/* ── Top: How It Works Grid ── */}
-      <div className="px-6 md:px-12">
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-16 md:gap-20 items-start max-w-6xl mx-auto">
+      <div className="content-area">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-16 md:gap-20 items-start">
 
           {/* Left */}
           <div>

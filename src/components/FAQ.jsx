@@ -10,7 +10,7 @@ export default function FAQ() {
   const toggle = (i) => setOpenIndex(openIndex === i ? null : i);
 
   return (
-    <section id="faq" ref={ref} className="fade-up py-24 px-6 md:px-12">
+    <section id="faq" ref={ref} className="fade-up py-24 content-area">
       <div className="grid grid-cols-1 md:grid-cols-2 gap-16 md:gap-20 items-start max-w-6xl mx-auto">
         {/* Left */}
         <div>

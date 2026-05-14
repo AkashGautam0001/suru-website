@@ -18,10 +18,11 @@ export default function DevPartner() {
   ];
 
   return (
-    <div
-      id="dev-partner"
-      ref={ref}
-      className="fade-up mx-6 md:mx-10 mb-16 rounded-[3rem] overflow-hidden relative"
+    <div className="content-area mb-16">
+      <div
+        id="dev-partner"
+        ref={ref}
+        className="fade-up rounded-[3rem] overflow-hidden relative"
       style={{
         background: "linear-gradient(135deg, rgba(255,255,255,0.85) 0%, rgba(240,245,255,0.9) 100%)",
         backdropFilter: "blur(20px)",
@@ -100,6 +101,7 @@ export default function DevPartner() {
           </PillCta>
         </div>
       </div>
+    </div>
     </div>
   );
 }

@@ -16,7 +16,7 @@ export default function PortfolioPage() {
   return (
     <div className="bg-[#e5f4fa] min-h-screen font-[Poppins]">
       <Navbar />
-      <div className="pt-32 pb-24 px-6 md:px-12">
+      <div className="content-area pt-32 pb-24">
         <p className="text-base font-medium text-[#00c57e] mb-3 tracking-wide">All Work</p>
         <h1 className="text-5xl md:text-7xl font-medium text-[#1f1f1f] leading-tight mb-16">
           Selected Projects

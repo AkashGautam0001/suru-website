@@ -15,6 +15,11 @@
 }
 
 @layer components {
+  /* Shared horizontal rhythm — use everywhere except About (full-bleed). */
+  .content-area {
+    @apply mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-10;
+  }
+
   /* Primary site CTAs — pill, flat, optional leading + ↗ */
   .pill-cta {
     border-radius: 9999px;
