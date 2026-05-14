@@ -3,6 +3,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { ArrowUpRight, Image } from "lucide-react";
 import { useScrollAnimation } from "../hooks/useScrollAnimation.js";
+import { PillCta } from "./PillCta.jsx";
 
 const portfolioItems = [
   { id: 1, label: "SaaS Dashboard Redesign", category: "Product Design", color: "#c8e6ff", tall: false },
@@ -38,13 +39,9 @@ export default function Portfolio() {
         <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-semibold text-[#1f1f1f] leading-tight">
           Selected Work
         </h2>
-        <Link
-          to="/portfolio"
-          className="inline-flex items-center gap-2 bg-[#00c57e] text-white px-6 sm:px-8 py-3 sm:py-4 rounded-full text-base sm:text-lg font-medium no-underline hover:-translate-y-1 transition-transform duration-200 self-start sm:self-auto w-fit"
-        >
+        <PillCta as={Link} to="/portfolio" style={{ background: "#00c57e" }} className="self-start sm:self-auto w-fit">
           View All
-          <ArrowUpRight size={20} strokeWidth={2} />
-        </Link>
+        </PillCta>
       </div>
 
       {/* Portfolio Grid */}
@@ -94,13 +91,9 @@ export default function Portfolio() {
 
       {/* Bottom CTA */}
       <div className="flex justify-center sm:justify-start">
-        <Link
-          to="/portfolio"
-          className="inline-flex items-center gap-2 bg-[#00c57e] text-white px-8 sm:px-12 py-4 rounded-full text-base sm:text-lg font-medium no-underline hover:-translate-y-1 transition-transform duration-200"
-        >
+        <PillCta as={Link} to="/portfolio" style={{ background: "#00c57e" }}>
           View All Portfolio
-          <ArrowUpRight size={20} strokeWidth={2} />
-        </Link>
+        </PillCta>
       </div>
     </section>
   );

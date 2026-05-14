@@ -87,22 +87,18 @@ export const TESTIMONIALS = [
 
 export const HOW_STEPS = [
   {
-    icon: "📞",
     title: "Discovery Call",
     desc: "We start with a free consultation to understand your product, users, and goals — no jargon, just clarity.",
   },
   {
-    icon: "🗺️",
     title: "UX Roadmap",
     desc: "You get a clear, prioritized design roadmap tailored to your stage — startup sprint or product scale.",
   },
   {
-    icon: "🎨",
     title: "Design & Iterate",
     desc: "We design fast, gather feedback, and refine. You see progress every week — never waiting months for results.",
   },
   {
-    icon: "🚀",
     title: "Handoff & Support",
     desc: "Dev-ready files, design system, and ongoing support to make sure the design ships exactly right.",
   },

@@ -1,7 +1,8 @@
 // src/components/Contact.jsx
 import React, { useState } from "react";
 import { useScrollAnimation } from "../hooks/useScrollAnimation.js";
-import { ArrowUpRight, CheckCircle, Clock, Lock } from "lucide-react";
+import { CheckCircle, Clock, Lock } from "lucide-react";
+import { PillCta } from "./PillCta.jsx";
 
 // ✅ SIRF YAHAN APNI 4 REAL ENTRY IDs DAALO
 // viewform URL open karo → Console mein entry IDs nikalo
@@ -161,39 +162,35 @@ export default function Contact() {
                 <p className="mt-4 text-red-400 text-sm">{error}</p>
               )}
 
-              <button
+              <PillCta
+                as="button"
                 type="submit"
                 disabled={loading}
-                className="self-start mt-8 inline-flex items-center gap-3 text-white font-medium cursor-pointer transition-all duration-300 hover:-translate-y-0.5 disabled:opacity-60 disabled:cursor-not-allowed border-none"
+                trailingArrow={!loading}
+                className="self-start mt-8 font-[family-name:var(--font-poppins)]"
                 style={{
                   background: "#ec74e8",
-                  borderRadius: "999px",
-                  padding: "clamp(14px, 2vw, 20px) clamp(28px, 4vw, 48px)",
-                  fontSize: "clamp(15px, 1.5vw, 20px)",
                   fontFamily: "Poppins, sans-serif",
                 }}
-              >
-                {loading ? (
-                  <>
+                leading={
+                  loading ? (
                     <svg
                       className="animate-spin"
-                      width="18" height="18"
+                      width="18"
+                      height="18"
                       viewBox="0 0 24 24"
                       fill="none"
                       stroke="white"
                       strokeWidth="2.5"
+                      aria-hidden
                     >
                       <path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83" />
                     </svg>
-                    Sending...
-                  </>
-                ) : (
-                  <>
-                    Submit
-                    <ArrowUpRight size={18} />
-                  </>
-                )}
-              </button>
+                  ) : null
+                }
+              >
+                {loading ? "Sending..." : "Submit"}
+              </PillCta>
             </form>
           )}
         </div>

@@ -1,7 +1,11 @@
 // src/components/HowItWorks.jsx
 import React from "react";
+import { FaPhone, FaMap, FaPalette, FaRocket } from "react-icons/fa6";
 import { HOW_STEPS } from "../data/siteData.js";
 import { useScrollAnimation } from "../hooks/useScrollAnimation.js";
+import { PillCta } from "./PillCta.jsx";
+
+const STEP_ICONS = [FaPhone, FaMap, FaPalette, FaRocket];
 
 const EXPERTS = [
   {
@@ -85,24 +89,24 @@ export default function HowItWorks() {
               No long contracts, no bloated processes. Just focused design that
               moves your product forward.
             </p>
-            <a
-              href="#contact"
-              className="inline-flex items-center gap-3 text-white px-9 py-4 rounded-full text-lg font-medium no-underline hover:-translate-y-0.5 transition-transform mt-8"
-              style={{ background: "#2b2b2b" }}
-            >
-              Talk to an expert ↗
-            </a>
+            <PillCta as="a" href="#contact" style={{ background: "#2b2b2b" }} className="mt-8">
+              Talk to an expert
+            </PillCta>
           </div>
 
           {/* Right — Steps */}
           <div className="flex flex-col gap-10">
-            {HOW_STEPS.map((step, i) => (
-              <div key={i} className="flex gap-5 items-start">
+            {HOW_STEPS.map((step, i) => {
+              const StepIcon = STEP_ICONS[i];
+              return (
+              <div key={step.title} className="flex gap-5 items-start">
                 <div
-                  className="w-14 h-14 rounded-xl flex-shrink-0 flex items-center justify-center text-2xl shadow-sm"
+                  className="flex h-14 w-14 shrink-0 items-center justify-center rounded-2xl shadow-sm sm:h-16 sm:w-16 sm:rounded-3xl"
                   style={{ background: "#ec74e8" }}
                 >
-                  {step.icon}
+                  {StepIcon ? (
+                    <StepIcon className="text-white" size={26} aria-hidden />
+                  ) : null}
                 </div>
                 <div>
                   <h3 className="text-2xl font-semibold text-[#353638] mb-2">
@@ -113,7 +117,8 @@ export default function HowItWorks() {
                   </p>
                 </div>
               </div>
-            ))}
+            );
+            })}
           </div>
         </div>
       </div>

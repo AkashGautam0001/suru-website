@@ -1,194 +1,205 @@
 // src/components/Services.jsx
 import React from "react";
-import { useScrollAnimation } from "../hooks/useScrollAnimation.js";
 import {
-  Compass,
-  Layers,
+  Target,
   Smartphone,
-  FlaskConical,
-  BarChart2,
-  Repeat2,
+  Laptop,
+  Rocket,
+  Search,
+  PenTool,
+  UserRound,
+  Clock,
+  RefreshCw,
+  Check,
 } from "lucide-react";
+import { useScrollAnimation } from "../hooks/useScrollAnimation.js";
+import "./servicesSection.css";
 
 const SERVICES = [
   {
-    icon: Compass,
-    color: "#ec74e8",
-    bgColor: "rgba(236,116,232,0.12)",
-    title: "UX Strategy & Research",
+    title: "Product UI/UX Design",
+    accent: "#E53935",
+    accentRgb: "229, 57, 53",
+    geoHex: false,
+    Icon: Target,
     items: [
-      "User interviews & personas",
-      "Journey mapping",
-      "Competitive analysis",
-      "Information architecture",
+      "End-to-end product design",
+      "User research & flows",
+      "Wireframes & high-fidelity UI",
+      "Design systems",
+      "UX audits & improvements",
     ],
   },
   {
-    icon: Layers,
-    color: "#00c57e",
-    bgColor: "rgba(0,197,126,0.12)",
-    title: "UI Design & Design Systems",
+    title: "Mobile App Design",
+    accent: "#9333EA",
+    accentRgb: "147, 51, 234",
+    geoHex: true,
+    Icon: Smartphone,
     items: [
-      "Component libraries",
-      "Visual design language",
-      "Responsive layouts",
-      "Design tokens",
+      "iOS & Android app UI",
+      "MVP design for startups",
+      "Feature & interaction design",
+      "Prototyping (Figma)",
+      "Developer-ready files",
     ],
   },
   {
-    icon: Smartphone,
-    color: "#6198ff",
-    bgColor: "rgba(97,152,255,0.12)",
-    title: "Product & Mobile Design",
+    title: "Website & Web App Design",
+    accent: "#2563EB",
+    accentRgb: "37, 99, 235",
+    geoHex: false,
+    Icon: Laptop,
     items: [
-      "iOS & Android design",
-      "Onboarding flows",
-      "In-app transactions",
-      "Referral systems",
+      "SaaS & dashboard design",
+      "Marketing websites",
+      "Landing pages",
+      "Conversion-focused UX",
+      "Responsive design",
     ],
   },
   {
-    icon: FlaskConical,
-    color: "#f5a623",
-    bgColor: "rgba(245,166,35,0.12)",
-    title: "Prototyping & Testing",
+    title: "MVP & Startup Design Support",
+    accent: "#EA580C",
+    accentRgb: "234, 88, 12",
+    geoHex: true,
+    Icon: Rocket,
     items: [
-      "Interactive prototypes",
-      "Usability testing",
-      "A/B test design",
-      "Accessibility audits",
+      "Idea → product design",
+      "Rapid MVP design (2–4 weeks)",
+      "Pitch deck & product visuals",
+      "UX strategy",
+      "Ongoing design support",
     ],
   },
   {
-    icon: BarChart2,
-    color: "#e63946",
-    bgColor: "rgba(230,57,70,0.12)",
-    title: "Growth & Conversion Design",
+    title: "UX Audit",
+    accent: "#16A34A",
+    accentRgb: "22, 163, 74",
+    geoHex: false,
+    Icon: Search,
     items: [
-      "Landing page design",
-      "Funnel optimization",
-      "Retention-focused UX",
-      "Revenue growth flows",
+      "Usability & heuristic evaluation",
+      "User flow & journey analysis",
+      "UX issues & friction points",
+      "UI consistency",
+      "Competitor UX review",
     ],
   },
   {
-    icon: Repeat2,
-    color: "#9b59b6",
-    bgColor: "rgba(155,89,182,0.12)",
-    title: "Ongoing Design Partnership",
+    title: "Brand & Visual Design (Optional)",
+    accent: "#6D28D9",
+    accentRgb: "109, 40, 217",
+    geoHex: true,
+    Icon: PenTool,
     items: [
-      "Dedicated design support",
-      "Weekly sprints",
-      "Async collaboration",
-      "Slack & Figma access",
+      "Product branding",
+      "Design system setup",
+      "UI kits",
+      "Iconography",
+      "Visual consistency",
+    ],
+  },
+  {
+    title: "Part Time UI UX Consultant",
+    accent: "#0284C7",
+    accentRgb: "2, 132, 199",
+    geoHex: false,
+    dualIcon: true,
+    Icon: UserRound,
+    items: [
+      "UX restructuring",
+      "Wireframes & interactions",
+      "High-fidelity app & web UI",
+      "Design system & components",
+      "Clickable Figma prototype",
+      "Developer-ready handoff",
+    ],
+  },
+  {
+    title: "Redesign App & Web",
+    accent: "#7C3AED",
+    accentRgb: "124, 58, 237",
+    geoHex: true,
+    Icon: RefreshCw,
+    items: [
+      "UX restructuring",
+      "Wireframes & interactions",
+      "High-fidelity app & web UI",
+      "Design system & components",
+      "Clickable Figma prototype",
+      "Developer-ready handoff",
     ],
   },
 ];
+
+function ServiceCard({ service }) {
+  const { title, accent, accentRgb, items, geoHex, Icon, dualIcon } = service;
+
+  return (
+    <article
+      className="svc-card"
+      style={
+        {
+          "--accent": accent,
+          "--accent-rgb": accentRgb,
+        }
+      }
+    >
+      <div className="svc-card__dots" aria-hidden />
+      <div className={geoHex ? "svc-card__geo svc-card__geo--hex" : "svc-card__geo"} aria-hidden />
+      <div className="svc-card__blob" aria-hidden />
+
+      <div
+        className={`svc-card__icon-ring${dualIcon ? " svc-card__icon-ring--dual" : ""}`}
+      >
+        {dualIcon ? (
+          <>
+            <UserRound size={22} strokeWidth={2} color={accent} />
+            <Clock size={17} strokeWidth={2} color={accent} />
+          </>
+        ) : (
+          <Icon size={26} strokeWidth={2} color={accent} />
+        )}
+      </div>
+
+      <h3 className="svc-card__title">{title}</h3>
+      <div className="svc-card__rule" aria-hidden />
+
+      <ul className="svc-card__list">
+        {items.map((item) => (
+          <li key={item}>
+            <Check className="svc-card__check" size={16} strokeWidth={2.5} aria-hidden />
+            <span>{item}</span>
+          </li>
+        ))}
+      </ul>
+    </article>
+  );
+}
 
 export default function Services() {
   const ref = useScrollAnimation();
 
   return (
-    <section
-      id="services"
-      ref={ref}
-      className="fade-up py-16 sm:py-20 md:py-24 px-4 sm:px-6 md:px-12"
-      style={{
-        background: "linear-gradient(to top, #e5f4fa, #ffd1fd 50%)",
-      }}
-    >
-      {/* ── Header ── */}
-      <div className="max-w-6xl mx-auto">
-        <p className="text-sm sm:text-base font-medium text-[#00c57e] mb-3 tracking-wide">
+    <section id="services" ref={ref} className="fade-up svc-section py-16 sm:py-20 md:py-28">
+      <div className="svc-section__inner mx-auto max-w-[1280px] px-4 sm:px-6 lg:px-8">
+        <p className="mb-2 text-center text-sm font-semibold uppercase tracking-[0.14em] text-[#00c57e] sm:text-left">
           Services
         </p>
-        <h2
-          className="font-medium text-[#1f1f1f] leading-tight mb-4"
-          style={{ fontSize: "clamp(2rem, 5.5vw, 4.5rem)" }}
-        >
+        <h2 className="mx-auto max-w-4xl text-center text-3xl font-bold leading-[1.12] tracking-tight text-[#0f172a] sm:text-left sm:text-4xl md:text-5xl lg:text-[3.25rem]">
           Everything your product needs
         </h2>
-        <p className="text-base sm:text-lg text-black/50 mb-10 sm:mb-14 leading-relaxed max-w-xl">
+        <p className="mx-auto mt-4 max-w-2xl text-center text-base leading-relaxed text-slate-600 sm:mx-0 sm:text-left sm:text-lg">
           From UX strategy to pixel-perfect delivery — all under one roof.
         </p>
 
-        {/* ── Row 1: 4 cards ── */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-5 mb-4 sm:mb-5">
-          {SERVICES.slice(0, 4).map((service, i) => (
-            <ServiceCard key={i} service={service} />
-          ))}
-        </div>
-
-        {/* ── Row 2: 2 cards centered ── */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-5 max-w-2xl mx-auto">
-          {SERVICES.slice(4).map((service, i) => (
-            <ServiceCard key={i} service={service} />
+        <div className="mt-12 grid grid-cols-1 gap-5 sm:grid-cols-2 sm:gap-6 lg:mt-14 lg:grid-cols-4 lg:gap-6">
+          {SERVICES.map((service) => (
+            <ServiceCard key={service.title} service={service} />
           ))}
         </div>
       </div>
     </section>
-  );
-}
-
-function ServiceCard({ service }) {
-  const { icon: Icon, color, bgColor, title, items } = service;
-
-  return (
-    <div
-      className="bg-white flex flex-col hover:shadow-lg transition-shadow duration-200"
-      style={{
-        borderRadius: "clamp(1.5rem, 3vw, 2.5rem)",
-        padding: "clamp(1.5rem, 3vw, 2.5rem)",
-        minHeight: "clamp(280px, 30vw, 380px)",
-      }}
-    >
-      {/* Icon box */}
-      <div
-        className="flex items-center justify-center flex-shrink-0"
-        style={{
-          width: "clamp(52px, 7vw, 72px)",
-          height: "clamp(52px, 7vw, 72px)",
-          borderRadius: "clamp(12px, 1.5vw, 18px)",
-          background: bgColor,
-          marginBottom: "clamp(1rem, 2vw, 1.5rem)",
-        }}
-      >
-        <Icon
-          color={color}
-          style={{
-            width: "clamp(24px, 3.5vw, 34px)",
-            height: "clamp(24px, 3.5vw, 34px)",
-          }}
-          strokeWidth={1.8}
-        />
-      </div>
-
-      {/* Title */}
-      <h3
-        className="font-semibold text-[#1f1f1f] mb-4 leading-snug"
-        style={{ fontSize: "clamp(15px, 1.6vw, 18px)" }}
-      >
-        {title}
-      </h3>
-
-      {/* Items */}
-      <ul className="list-none space-y-2 mt-auto">
-        {items.map((item) => (
-          <li
-            key={item}
-            className="flex items-start gap-2"
-            style={{ fontSize: "clamp(12px, 1.2vw, 14px)" }}
-          >
-            <span
-              className="font-bold flex-shrink-0 mt-0.5"
-              style={{ color: color }}
-            >
-              &gt;
-            </span>
-            <span className="text-[#444] leading-relaxed">{item}</span>
-          </li>
-        ))}
-      </ul>
-    </div>
   );
 }

@@ -1,7 +1,7 @@
 // src/components/Footer.jsx
 import React from "react";
 import logo from "../assets/logo/logo.png";
-import { ArrowUpRight, Mail, Phone } from "lucide-react";
+import { Mail, Phone } from "lucide-react";
 import {
   FaLinkedinIn,
   FaInstagram,
@@ -10,6 +10,7 @@ import {
   FaFacebookF,
   FaWhatsapp,
 } from "react-icons/fa6";
+import { PillCta } from "./PillCta.jsx";
 
 const FOOTER_LINKS = [
   { label: "About",        href: "#about"     },
@@ -131,7 +132,9 @@ export default function Footer() {
                     onMouseEnter={(e) => (e.currentTarget.style.color = "#00c57e")}
                     onMouseLeave={(e) => (e.currentTarget.style.color = "rgba(255,255,255,0.45)")}
                   >
-                    <ArrowUpRight size={13} />
+                    <span className="text-white/35" aria-hidden>
+                      →
+                    </span>
                     {link.label}
                   </a>
                 </li>
@@ -172,18 +175,9 @@ export default function Footer() {
 
               {/* CTA */}
               <li className="mt-2">
-                <a
-                  href="#contact"
-                  className="inline-flex items-center gap-2 text-white text-sm font-medium no-underline transition-all hover:-translate-y-0.5"
-                  style={{
-                    background: "#00c57e",
-                    borderRadius: "999px",
-                    padding: "10px 20px",
-                  }}
-                >
+                <PillCta as="a" href="#contact" style={{ background: "#00c57e" }} className="text-sm">
                   Free Consultation
-                  <ArrowUpRight size={15} />
-                </a>
+                </PillCta>
               </li>
             </ul>
           </div>

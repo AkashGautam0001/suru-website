@@ -1,7 +1,8 @@
 // src/components/DevPartner.jsx
 import React from "react";
 import { useScrollAnimation } from "../hooks/useScrollAnimation.js";
-import { ArrowUpRight, Sparkles, Code2, Clock3 } from "lucide-react";
+import { Handshake, Code2, Clock3 } from "lucide-react";
+import { PillCta } from "./PillCta.jsx";
 
 export default function DevPartner() {
   const ref = useScrollAnimation();
@@ -13,7 +14,7 @@ export default function DevPartner() {
   const stats = [
     { icon: <Clock3 size={18} />, label: "15+ Years Experience" },
     { icon: <Code2 size={18} />, label: "Full Stack Experts" },
-    { icon: <Sparkles size={18} />, label: "Trusted Partner" },
+    { icon: <Handshake size={18} />, label: "Trusted Partner" },
   ];
 
   return (
@@ -43,7 +44,6 @@ export default function DevPartner() {
         <div className="flex-1 space-y-6">
           <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full text-sm font-semibold"
             style={{ background: "rgba(99,102,241,0.1)", color: "#6366f1" }}>
-            <Sparkles size={14} />
             Development Partner
           </div>
           <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight"
@@ -88,30 +88,16 @@ export default function DevPartner() {
           </div>
 
           {/* CTA Button */}
-          <button
+          <PillCta
+            as="button"
+            type="button"
             onClick={handleOpenLink}
-            className="group inline-flex items-center gap-3 px-8 py-4 rounded-2xl text-base font-semibold transition-all duration-300 cursor-pointer border-none"
-            style={{
-              background: "linear-gradient(135deg, #6366f1, #a855f7)",
-              color: "#ffffff",
-              boxShadow: "0 4px 24px rgba(99,102,241,0.35)",
-            }}
-            onMouseEnter={e => {
-              e.currentTarget.style.boxShadow = "0 8px 32px rgba(99,102,241,0.5)";
-              e.currentTarget.style.transform = "translateY(-2px)";
-            }}
-            onMouseLeave={e => {
-              e.currentTarget.style.boxShadow = "0 4px 24px rgba(99,102,241,0.35)";
-              e.currentTarget.style.transform = "translateY(0)";
-            }}
+            style={{ background: "#6366f1" }}
+            leading={<Code2 size={20} aria-hidden />}
+            className="group text-base font-semibold"
           >
-            <Code2 size={20} />
             Visit JPR Technology
-            <ArrowUpRight
-              size={20}
-              className="transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
-            />
-          </button>
+          </PillCta>
         </div>
       </div>
     </div>

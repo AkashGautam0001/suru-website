@@ -1,170 +1,142 @@
 // src/components/Testimonials.jsx
-import React, { useRef } from "react";
+import React from "react";
+import { Rocket, LineChart, Handshake, Building2 } from "lucide-react";
 import { useScrollAnimation } from "../hooks/useScrollAnimation.js";
-import { Play } from "lucide-react";
+import "./testimonialsSection.css";
 
-const TESTIMONIALS = [
+import persainImg from "../assets/images/persain_jeet_singh.png";
+import luckyImg from "../assets/images/lucky_rohila.png";
+import divyanshImg from "../assets/images/divyansh_raj.png";
+import naveenImg from "../assets/images/naveen_goswami.png";
+
+const THEMES = [
+  { accent: "#7C3AED", accentRgb: "124, 58, 237", soft: "rgba(124, 58, 237, 0.16)" },
+  { accent: "#2563EB", accentRgb: "37, 99, 235", soft: "rgba(37, 99, 235, 0.14)" },
+  { accent: "#16A34A", accentRgb: "22, 163, 74", soft: "rgba(22, 163, 74, 0.14)" },
+];
+
+const FOOTER_ICONS = [Rocket, LineChart, Handshake, Building2];
+
+const REVIEWS = [
   {
     name: "Persainjit Singh",
-    role: "Founder LinenGrass",
-    text: "From idea to execution, we move fast, think smart, and design experiences that truly connect with users.",
-    image: "https://randomuser.me/api/portraits/men/32.jpg",
+    credential: "IIT – Bombay",
+    text: "I've worked with Ashwani for the last 7 years on multiple products, and his UI/UX understanding has always been exceptional. Currently, he is helping us build the automation app and software for LinenGrass. His product thinking, problem-solving skills, and calm nature make him a valuable part of any team.",
+    image: persainImg,
+    footerLabel: "Founder",
+    footerCompany: "LinenGrass",
   },
   {
     name: "Lucky Rohilla",
-    role: "Founder Quantel.in",
-    text: "From idea to execution, we move fast, think smart, and design experiences that truly connect.",
-    image: "https://randomuser.me/api/portraits/men/44.jpg",
+    credential: "IIT – Delhi",
+    text: "Ashwani brings rare clarity to complex product flows. From first wireframes to polished UI, he thinks like a founder and ships like a senior in-house designer. Quantel's dashboard and onboarding would not be where they are without his ownership.",
+    image: luckyImg,
+    footerLabel: "Founder",
+    footerCompany: "Quantel.in",
   },
   {
-    name: "Komal Sharma",
-    role: "Founder The Bliss House",
-    text: "From idea to execution, we move fast, think smart, and design experiences users love.",
-    image: "https://randomuser.me/api/portraits/women/65.jpg",
+    name: "Divyansh Raj",
+    credential: "IIT – Mumbai",
+    text: "Working with Ashwani feels effortless — strong communication, fast iterations, and designs that actually convert. He helped us rethink the entire customer journey and the uplift in engagement spoke for itself.",
+    image: divyanshImg,
+    footerLabel: "Founder",
+    footerCompany: "The Bliss House",
   },
   {
-    name: "Rahul Mehra",
-    role: "Founder TechNova",
-    text: "Ashwani understood our vision immediately and delivered beyond expectations every single time.",
-    image: "https://randomuser.me/api/portraits/men/52.jpg",
-  },
-  {
-    name: "Priya Kapoor",
-    role: "Founder StyleHub",
-    text: "The designs were clean, conversion-focused, and delivered on time. Highly recommended.",
-    image: "https://randomuser.me/api/portraits/women/44.jpg",
-  },
-  {
-    name: "Amit Verma",
-    role: "Founder GrowthLab",
-    text: "Working with Ashwani felt like having a senior designer embedded in our team full time.",
-    image: "https://randomuser.me/api/portraits/men/76.jpg",
-  },
-  {
-    name: "Sneha Joshi",
-    role: "Founder MindBridge",
-    text: "Our user retention jumped 40% after the redesign. The UX thinking was next level.",
-    image: "https://randomuser.me/api/portraits/women/33.jpg",
-  },
-  {
-    name: "Vikram Singh",
-    role: "Founder CloudBase",
-    text: "Fast, reliable, and incredibly talented. The best design partner we've worked with.",
-    image: "https://randomuser.me/api/portraits/men/18.jpg",
+    name: "Naveen Goswami",
+    credential: "Product & Growth Lead",
+    text: "I've partnered with Ashwani across multiple initiatives. Whether it's a quick UX audit or a full product redesign, he consistently delivers thoughtful, user-centred work and collaborates seamlessly with engineering.",
+    image: naveenImg,
+    footerLabel: "Entrepreneur",
+    footerCompany: "Serial ventures",
   },
 ];
 
-// Duplicate for seamless infinite loop
-const ITEMS = [...TESTIMONIALS, ...TESTIMONIALS];
+const LOOP_REVIEWS = [...REVIEWS, ...REVIEWS];
 
-export default function Testimonials() {
-  const ref       = useScrollAnimation();
-  const trackRef  = useRef(null);
+function QuoteGlyph() {
+  return (
+    <svg viewBox="0 0 24 24" width="18" height="18" aria-hidden>
+      <path
+        fill="currentColor"
+        d="M7.5 5.5c-2.5 0-4 1.8-4 4.3 0 1.6 1 3 2.4 3.4L4.5 16c-.1.4.3.7.7.5l4.8-2.6c.8-.4 1.3-1.2 1.3-2.1V9.5c0-1.4-1.1-2.5-2.5-2.5H7.5zm9.5 0c-2.5 0-4 1.8-4 4.3 0 1.6 1 3 2.4 3.4L14 16c-.1.4.3.7.7.5l4.8-2.6c.8-.4 1.3-1.2 1.3-2.1V9.5c0-1.4-1.1-2.5-2.5-2.5H17z"
+      />
+    </svg>
+  );
+}
+
+function ReviewCard({ review, theme, FooterIcon }) {
+  const t = THEMES[theme % THEMES.length];
 
   return (
-    <section
-      id="testimonials"
-      ref={ref}
-      className="fade-up py-24 overflow-hidden"
-      style={{ background: "#dff0fa" }}
+    <article
+      className="tst-card"
+      style={
+        {
+          "--tst-accent": t.accent,
+          "--tst-accent-rgb": t.accentRgb,
+          "--tst-soft": t.soft,
+        }
+      }
     >
-      {/* ── Heading ── */}
-      <div className="text-center px-126 mb-36">
-        <h1
-          className="text-semibold text-[#0f0f0f] leading-tight mb-4"
-          style={{ fontSize: "clamp(2.2rem, 6vw, 4.5rem)" }}
-        >
-          Trusted by Startup<br />Game-Changers
-        </h1>
-        <p className="text-[#444] text-base sm:text-lg font-normal">
-          10+ Entrepreneurs I've Helped<br />Shape Better Products
-        </p>
-      </div>
-
-      {/* ── Scrolling Track ── */}
-      <div className="relative w-full overflow-hidden">
-        {/* Left fade */}
-        <div
-          className="absolute left-0 top-0 bottom-0 z-10 pointer-events-none"
-          style={{ width: "80px", background: "linear-gradient(to right, #dff0fa, transparent)" }}
-        />
-        {/* Right fade */}
-        <div
-          className="absolute right-0 top-0 bottom-0 z-10 pointer-events-none"
-          style={{ width: "80px", background: "linear-gradient(to left, #dff0fa, transparent)" }}
-        />
-
-        {/* Animated row */}
-        <div
-          ref={trackRef}
-          className="flex gap-5 w-max"
-          style={{
-            animation: "scrollLeft 35s linear infinite",
-            willChange: "transform",
-          }}
-        >
-          {ITEMS.map((t, i) => (
-            <div
-              key={i}
-              className="flex-shrink-0 overflow-hidden"
-              style={{
-                width: "clamp(260px, 30vw, 440px)",
-                borderRadius: "20px",
-                background: "#fff",
-                boxShadow: "0 2px 16px rgba(0,0,0,0.07)",
-              }}
-            >
-              {/* Photo with play button */}
-              <div className="relative w-full" style={{ aspectRatio: "4/3" }}>
-                <img
-                  src={t.image}
-                  alt={t.name}
-                  className="w-full h-full object-cover object-top"
-                />
-                {/* Green play button */}
-                <button
-                  className="absolute bottom-4 left-1/2 -translate-x-1/2 flex items-center justify-center transition-transform hover:scale-110"
-                  style={{
-                    width: "56px",
-                    height: "56px",
-                    borderRadius: "50%",
-                    background: "#00c57e",
-                    border: "none",
-                    cursor: "pointer",
-                    boxShadow: "0 4px 20px rgba(0,197,126,0.45)",
-                  }}
-                >
-                  <Play size={22} color="white" fill="white" />
-                </button>
-              </div>
-
-              {/* Text content */}
-              <div className="px-5 pt-4 pb-6">
-                <p className="font-bold text-[#0f0f0f] text-base sm:text-lg mb-0.5">
-                  {t.name}
-                </p>
-                <p
-                  className="font-semibold text-sm mb-3"
-                  style={{ color: "#378ADD" }}
-                >
-                  {t.role}
-                </p>
-                <p className="text-[#333] text-sm leading-relaxed line-clamp-3">
-                  {t.text}
-                </p>
-              </div>
-            </div>
-          ))}
+      <div className="tst-card__media">
+        <div className="tst-card__media-blob" aria-hidden />
+        <div className="tst-card__media-dots" aria-hidden />
+        <div className="tst-card__media-frame">
+          <img src={review.image} alt={review.name} loading="lazy" decoding="async" />
+        </div>
+        <div className="tst-card__quote" aria-hidden>
+          <QuoteGlyph />
         </div>
       </div>
 
-      {/* ── Keyframe animation ── */}
-      <style>{`
-        @keyframes scrollLeft {
-          0%   { transform: translateX(0); }
-          100% { transform: translateX(-50%); }
-        }
-      `}</style>
+      <h3 className="tst-card__name">{review.name}</h3>
+      <p className="tst-card__cred">{review.credential}</p>
+      <p className="tst-card__text">{review.text}</p>
+
+      <div className="tst-card__foot">
+        <div className="tst-card__foot-icon">
+          <FooterIcon strokeWidth={2.2} />
+        </div>
+        <div className="tst-card__foot-text">
+          <p className="tst-card__foot-label">{review.footerLabel}</p>
+          <p className="tst-card__foot-company">{review.footerCompany}</p>
+        </div>
+      </div>
+    </article>
+  );
+}
+
+export default function Testimonials() {
+  const ref = useScrollAnimation();
+
+  return (
+    <section id="testimonials" ref={ref} className="fade-up tst-section py-16 md:py-24">
+      <div className="tst-section__head">
+        <h2 className="tst-section__title">
+          10+ Entrepreneurs I&apos;ve Helped Shape Better Products
+        </h2>
+        <div className="tst-section__rule" aria-hidden />
+      </div>
+
+      <div className="tst-marquee">
+        <div className="tst-marquee__fade tst-marquee__fade--l" aria-hidden />
+        <div className="tst-marquee__fade tst-marquee__fade--r" aria-hidden />
+
+        <div className="tst-marquee__track">
+          {LOOP_REVIEWS.map((review, i) => {
+            const FooterIcon = FOOTER_ICONS[i % FOOTER_ICONS.length];
+            return (
+              <ReviewCard
+                key={`${review.name}-${i}`}
+                review={review}
+                theme={i % THEMES.length}
+                FooterIcon={FooterIcon}
+              />
+            );
+          })}
+        </div>
+      </div>
     </section>
   );
 }
