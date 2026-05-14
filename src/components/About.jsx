@@ -38,17 +38,12 @@ export default function About() {
           borderBottomRightRadius: 0,
           borderBottomLeftRadius: "3rem",
           boxShadow: "0 20px 50px rgba(0, 177, 106, 0.22)",
-        }}
-      >
+        }}>
         {/* Profile: photo + fade into green */}
         <div className="flex flex-col items-center px-6 pt-10 pb-2">
           <div className="relative w-full max-w-[300px] mx-auto">
             <div className="relative w-full overflow-hidden rounded-t-lg aspect-[3/3.65] max-h-[320px]">
-              <img
-                src={ashwaniImg}
-                alt="Ashwani Tyagi"
-                className="w-full h-full object-cover object-top block"
-              />
+              <img src={ashwaniImg} alt="Ashwani Tyagi" className="w-full h-full object-cover object-top block" />
               <div
                 className="pointer-events-none absolute inset-x-0 bottom-0 h-[38%]"
                 style={{
@@ -63,21 +58,17 @@ export default function About() {
 
         {/* About copy: left-aligned */}
         <div className="px-6 pt-8 pb-10">
-          <h2 className="font-bold text-white text-3xl sm:text-4xl leading-tight mb-5 text-left">
-            About Me
-          </h2>
+          <h2 className="font-bold text-white text-3xl sm:text-4xl leading-tight mb-5 text-left">About Me</h2>
           <p className="text-white leading-relaxed mb-4 text-sm sm:text-[15px] text-left">
             15+ years of experience in UI/UX design, product design, and digital transformation across{" "}
-            <strong className="font-bold text-white">
-              gaming, e-learning, publishing, and technology.
-            </strong>{" "}
-            Proven track record of driving user{" "}
-            <strong className="font-bold text-white">trust, engagement, and revenue growth</strong> through
-            design innovation.
+            <strong className="font-bold text-white">gaming, e-learning, publishing, and technology.</strong> Proven
+            track record of driving user{" "}
+            <strong className="font-bold text-white">trust, engagement, and revenue growth</strong> through design
+            innovation.
           </p>
           <p className="text-white leading-relaxed mb-8 text-sm sm:text-[15px] text-left">
-            Skilled at <strong className="font-bold text-white">end-to-end product journeys</strong> – from
-            onboarding flows and in-app transactions to content design and referral systems.
+            Skilled at <strong className="font-bold text-white">end-to-end product journeys</strong> – from onboarding
+            flows and in-app transactions to content design and referral systems.
           </p>
 
           <div className="mb-8 text-left">
@@ -87,8 +78,7 @@ export default function About() {
               target="_blank"
               rel="noopener noreferrer"
               style={{ background: "#EC74E8" }}
-              className="text-sm sm:text-base"
-            >
+              className="text-sm sm:text-base">
               Linkedin
             </PillCta>
           </div>
@@ -96,15 +86,16 @@ export default function About() {
           {/* Tools capsule — single row, centered */}
           <div className="flex justify-center">
             <div
-              className="inline-flex flex-nowrap items-end justify-center gap-4 sm:gap-5 overflow-x-auto max-w-full px-4 py-4 sm:px-6 sm:py-5"
-              style={{
-                background: "rgba(255,255,255,0.22)",
-                backdropFilter: "blur(20px)",
-                WebkitBackdropFilter: "blur(20px)",
-                borderRadius: "999px",
-                boxShadow: "inset 0 1px 0 rgba(255,255,255,0.25)",
-              }}
-            >
+              className="inline-flex flex-wrap items-end gap-4 sm:gap-5 overflow-x-auto max-w-full px-4 py-4 sm:px-6 sm:py-5"
+              style={
+                {
+                  // background: "rgba(255,255,255,0.22)",
+                  // backdropFilter: "blur(20px)",
+                  // WebkitBackdropFilter: "blur(20px)",
+                  // borderRadius: "999px",
+                  // boxShadow: "inset 0 1px 0 rgba(255,255,255,0.25)",
+                }
+              }>
               {TOOLS.map(({ name, icon, shadow }) => (
                 <div key={name} className="flex flex-col items-center gap-1.5 shrink-0 min-w-[44px]">
                   <div
@@ -114,13 +105,8 @@ export default function About() {
                       height: "44px",
                       borderRadius: "14px",
                       boxShadow: shadow,
-                    }}
-                  >
-                    <img
-                      src={icon}
-                      alt={name}
-                      className="w-full h-full object-contain rounded-[14px] block"
-                    />
+                    }}>
+                    <img src={icon} alt={name} className="w-full h-full object-contain rounded-[14px] block" />
                   </div>
                   <span className="text-white text-center font-normal leading-tight text-[10px] sm:text-[11px] max-w-[64px]">
                     {name}
@@ -139,8 +125,7 @@ export default function About() {
           background: GREEN_DESKTOP,
           borderRadius: "0 300px 300px 0",
           maxWidth: "95%",
-        }}
-      >
+        }}>
         <div className="flex flex-col md:flex-row items-center md:items-stretch px-6 sm:px-10 md:px-16 pt-10 md:pt-16 pb-10 md:pb-0 gap-10 md:gap-0">
           <div className="flex-1 flex flex-col justify-center md:pr-12 z-10 md:pb-16">
             <h2 className="font-bold text-white leading-tight mb-5 text-4xl sm:text-5xl md:text-6xl lg:text-7xl">
@@ -148,13 +133,13 @@ export default function About() {
             </h2>
             <p className="text-white leading-relaxed mb-4 text-sm sm:text-base md:text-lg">
               15+ years of experience in UI/UX design, product design, and digital transformation across{" "}
-              <strong className="font-bold">gaming, e-learning, publishing, and technology.</strong> Proven track
-              record of driving user{" "}
-              <strong className="font-bold">trust, engagement, and revenue growth</strong> through design innovation.
+              <strong className="font-bold">gaming, e-learning, publishing, and technology.</strong> Proven track record
+              of driving user <strong className="font-bold">trust, engagement, and revenue growth</strong> through
+              design innovation.
             </p>
             <p className="text-white leading-relaxed mb-8 text-sm sm:text-base md:text-lg">
-              Skilled at <strong className="font-bold">end-to-end product journeys</strong> – from onboarding flows
-              and in-app transactions to content design and referral systems.
+              Skilled at <strong className="font-bold">end-to-end product journeys</strong> – from onboarding flows and
+              in-app transactions to content design and referral systems.
             </p>
             <div className="mb-8">
               <PillCta
@@ -163,8 +148,7 @@ export default function About() {
                 target="_blank"
                 rel="noopener noreferrer"
                 style={{ background: "#EC74E8" }}
-                className="text-sm sm:text-base"
-              >
+                className="text-sm sm:text-base">
                 Linkedin
               </PillCta>
             </div>
@@ -178,8 +162,7 @@ export default function About() {
                 padding: "20px 28px",
                 width: "fit-content",
                 maxWidth: "100%",
-              }}
-            >
+              }}>
               {TOOLS.map(({ name, icon, shadow }) => (
                 <div key={name} className="flex flex-col items-center gap-2">
                   <div
@@ -189,8 +172,7 @@ export default function About() {
                       height: "50px",
                       borderRadius: "16px",
                       boxShadow: shadow,
-                    }}
-                  >
+                    }}>
                     <img
                       src={icon}
                       alt={name}
@@ -203,7 +185,9 @@ export default function About() {
                       }}
                     />
                   </div>
-                  <span className="text-white text-center" style={{ fontSize: "13px", fontWeight: 400, lineHeight: 1.2 }}>
+                  <span
+                    className="text-white text-center"
+                    style={{ fontSize: "13px", fontWeight: 400, lineHeight: 1.2 }}>
                     {name}
                   </span>
                 </div>
@@ -213,8 +197,7 @@ export default function About() {
 
           <div
             className="relative flex-shrink-0 flex items-end justify-center mx-auto md:mx-0 mb-14"
-            style={{ width: "min(300px, 45vw)" }}
-          >
+            style={{ width: "min(300px, 45vw)" }}>
             <img
               src={ashwaniImg}
               alt="Ashwani Tyagi"
@@ -231,8 +214,7 @@ export default function About() {
                 background: "#111111",
                 borderRadius: "24px 0 24px 24px",
                 padding: "14px 28px",
-              }}
-            >
+              }}>
               <p className="text-white font-bold m-0 text-base sm:text-lg">Ashwani Tyagi</p>
               <p className="m-0 mt-1 text-xs sm:text-sm" style={{ color: "rgba(255,255,255,0.65)" }}>
                 UI/UX Strategy Partner
