@@ -1,0 +1,245 @@
+/* What I Offer — cards + optional scroll-driven horizontal UX */
+
+.offer-section {
+  overflow: visible;
+}
+
+.offer-section .content-area {
+  overflow: visible;
+}
+
+/* Tall stage: vertical scroll moves cards horizontally (all screen sizes) */
+.offer-scroll-stage {
+  position: relative;
+}
+
+.offer-scroll-stage--active {
+  margin-top: -0.5rem;
+}
+
+.offer-scroll-sticky--active {
+  position: sticky;
+  top: 0;
+  z-index: 5;
+  display: flex;
+  align-items: center;
+  min-height: 100dvh;
+  padding-block: 1rem;
+}
+
+.offer-track-shell {
+  position: relative;
+  width: 100%;
+  overflow: visible;
+  padding-block: 1.25rem;
+  margin-block: -1.25rem;
+}
+
+.offer-track-viewport {
+  width: 100%;
+  overflow-x: auto;
+  overflow-y: visible;
+  scroll-snap-type: x mandatory;
+  touch-action: pan-x;
+  padding-block: 0.75rem;
+  margin-block: -0.75rem;
+  padding-bottom: 0.75rem;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+.offer-track-viewport::-webkit-scrollbar {
+  display: none;
+}
+
+.offer-track-viewport--centered {
+  overflow-x: visible;
+}
+
+.offer-track-viewport--scroll-drive {
+  overflow: hidden;
+  scroll-snap-type: none;
+  touch-action: pan-y;
+  -webkit-overflow-scrolling: auto;
+}
+
+.offer-track {
+  display: flex;
+  gap: 1rem;
+  width: max-content;
+  margin-inline: auto;
+}
+
+.offer-track--scroll-drive {
+  margin-inline: 0;
+  will-change: transform;
+}
+
+@media (max-width: 639px) {
+  .offer-track--scroll-drive {
+    padding-right: 2.5rem;
+  }
+
+  .offer-scroll-stage--active .content-area {
+    padding-left: 1.75rem;
+    padding-right: 1.25rem;
+  }
+}
+
+.offer-track-viewport:not(.offer-track-viewport--centered) .offer-track {
+  margin-inline: 0;
+  padding-right: 2rem;
+}
+
+@media (max-width: 639px) {
+  .offer-track-viewport:not(.offer-track-viewport--centered) .offer-track {
+    padding-left: 0.75rem;
+    padding-right: 2.5rem;
+  }
+}
+
+.offer-card {
+  display: flex;
+  min-height: 24rem;
+  width: 14.25rem;
+  flex-shrink: 0;
+  flex-direction: column;
+  scroll-snap-align: start;
+  border-radius: 0.5rem 0.5rem 9rem 9rem;
+  border: 1px solid #1f1f1f;
+  background: #ffffff;
+  padding: 2rem 1.35rem;
+  transition: transform 0.2s ease;
+}
+
+@media (min-width: 640px) {
+  .offer-card {
+    width: 16rem;
+    min-height: 26rem;
+    padding: 2.25rem 1.5rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .offer-card {
+    width: 16.75rem;
+    min-height: 27rem;
+  }
+
+  .offer-card:hover {
+    transform: translateY(-4px);
+  }
+}
+
+.offer-card__head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+  margin-bottom: 0.35rem;
+}
+
+.offer-card__num {
+  font-size: 2.75rem;
+  font-weight: 900;
+  line-height: 1;
+}
+
+@media (min-width: 640px) {
+  .offer-card__num {
+    font-size: 3rem;
+  }
+}
+
+.offer-card__arrow {
+  flex-shrink: 0;
+  opacity: 0.95;
+}
+
+.offer-card__title {
+  margin: 0 0 1.25rem;
+  font-size: 1.75rem;
+  font-weight: 500;
+  line-height: 1.15;
+  color: #353638;
+}
+
+@media (min-width: 640px) {
+  .offer-card__title {
+    font-size: 2rem;
+  }
+}
+
+.offer-card__list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.625rem;
+}
+
+.offer-card__item {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.5rem;
+  font-size: 1rem;
+  line-height: 1.35;
+  color: #1f1f1f;
+}
+
+@media (min-width: 640px) {
+  .offer-card__item {
+    font-size: 1.0625rem;
+  }
+}
+
+.offer-card__check {
+  flex-shrink: 0;
+  font-weight: 700;
+  line-height: 1.35;
+}
+
+.offer-forward-btn {
+  position: absolute;
+  top: 50%;
+  right: 0;
+  z-index: 30;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 3rem;
+  height: 3rem;
+  border: none;
+  border-radius: 9999px;
+  background: #2b2b2b;
+  color: #ffffff;
+  cursor: pointer;
+  transform: translate(50%, -50%);
+  box-shadow: 0 4px 18px rgba(0, 0, 0, 0.18);
+  transition: background 0.2s ease, opacity 0.2s ease, box-shadow 0.2s ease;
+  pointer-events: auto;
+}
+
+@media (min-width: 640px) {
+  .offer-forward-btn {
+    width: 3.25rem;
+    height: 3.25rem;
+  }
+}
+
+.offer-forward-btn:hover {
+  background: #1a1a1a;
+  box-shadow: 0 6px 22px rgba(0, 0, 0, 0.22);
+}
+
+.offer-forward-btn:focus-visible {
+  outline: 2px solid #00c57e;
+  outline-offset: 3px;
+}
+
+.offer-forward-btn:disabled {
+  opacity: 0;
+  pointer-events: none;
+}
