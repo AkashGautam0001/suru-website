@@ -26,6 +26,8 @@ export default function WhatIOffer() {
   const [isCentered, setIsCentered] = useState(false);
   const [isScrollMode, setIsScrollMode] = useState(false);
   const [scrollStepVh, setScrollStepVh] = useState(getScrollStepVh);
+  const [showLeftFade, setShowLeftFade] = useState(false);
+  const [showRightFade, setShowRightFade] = useState(false);
 
   const measureLayout = useCallback(() => {
     const viewport = viewportRef.current;
@@ -45,6 +47,8 @@ export default function WhatIOffer() {
     if (!scrollMode) {
       setTranslateX(0);
       setCanGoForward(false);
+      setShowLeftFade(false);
+      setShowRightFade(false);
     }
   }, []);
 
@@ -61,14 +65,17 @@ export default function WhatIOffer() {
     const stageTop = window.scrollY + rect.top;
     const scrollable = Math.max(stage.offsetHeight - window.innerHeight, 1);
     const progress = Math.min(1, Math.max(0, (window.scrollY - stageTop) / scrollable));
+    const tx = progress * maxScroll;
 
-    setTranslateX(progress * maxScroll);
+    setTranslateX(tx);
 
     const nextIndex =
       CARD_COUNT <= 1 ? 0 : Math.min(CARD_COUNT - 1, Math.round(progress * (CARD_COUNT - 1)));
 
     setActiveIndex(nextIndex);
     setCanGoForward(progress < 0.98);
+    setShowLeftFade(tx > 40);
+    setShowRightFade(maxScroll - tx > 80);
   }, [isScrollMode]);
 
   useEffect(() => {
@@ -127,6 +134,8 @@ export default function WhatIOffer() {
     "offer-track-viewport",
     isScrollMode && "offer-track-viewport--scroll-drive",
     isCentered && "offer-track-viewport--centered",
+    isScrollMode && showLeftFade && "offer-track-viewport--fade-left",
+    isScrollMode && showRightFade && "offer-track-viewport--fade-right",
   ]
     .filter(Boolean)
     .join(" ");
